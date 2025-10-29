@@ -26,7 +26,10 @@ function crearTabla(datos){
                     : 'Sin imagen'}
             </td>
             <td>
-                <button class="btn-eliminar" data-id="${dato.id}">Eliminar</button>
+                <button class="btn-eliminar" data-id="${dato.id}">
+                        <svg><use href="#icono-eliminar"></use></svg>
+            Eliminar
+                </button>
             </td>
         `
         tbody.appendChild(fila)
@@ -45,6 +48,12 @@ function buscarCodigo(){
         d.codigoEmpleado.toLowerCase().includes(valor)
     )
     crearTabla(filtrados)
+}
+
+
+function formatearFecha(fechaStr) {
+    const fecha = new Date(fechaStr);
+    return fecha.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
 function ordenarImporte(){
